@@ -3,6 +3,7 @@ package com.example.Spring_Eval.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,8 @@ public class Entreprise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @Column(unique = true)
+    @NotBlank(message = "Le nom de l'entreprise ne peut pas être vide")
     String nom;
 
     public Utilisateur getUtilisateur() {
@@ -32,13 +35,8 @@ public class Entreprise {
     private Utilisateur utilisateur;
 
 
-    public List<Convention> getConventions() {
-        return conventions;
-    }
 
-    public void setConventions(List<Convention> conventions) {
-        this.conventions = conventions;
-    }
+
 
 
     public String getNom() {
@@ -57,6 +55,23 @@ public class Entreprise {
         this.id = id;
     }
 
+//    public Convention getConvention() {
+//        return convention;
+//    }
+//
+//    public void setConvention(Convention convention) {
+//        this.convention = convention;
+//    }
+
     @OneToMany(mappedBy = "entreprise")
     private List<Convention> conventions;
+
+    public List<Convention> getConventions() {
+        return conventions;
+    }
+
+    public void setConventions(List<Convention> conventions) {
+        this.conventions = conventions;
+    }
+
 }

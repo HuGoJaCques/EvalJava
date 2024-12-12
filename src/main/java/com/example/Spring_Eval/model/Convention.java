@@ -2,6 +2,7 @@ package com.example.Spring_Eval.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -18,12 +19,22 @@ public class Convention {
 
     String nom;
 
-    String subvention;
+    @Min(value = 0, message = "La subvention doit être supérieure à 0")
+    Float subvention;
 
+    @Min(value = 1, message = "Le nombre de salarié maximum ne peut pas être inférieur à 1")
     Integer salarie_maximum;
 
+//    public List<Entreprise> getEntreprises() {
+//        return entreprises;
+//    }
+//
+//    public void setEntreprises(List<Entreprise> entreprises) {
+//        this.entreprises = entreprises;
+//    }
+
     @ManyToOne
-    @JoinColumn(name = "entreprise_id")
+    @JoinColumn(name = "Entreprise_id")
     @JsonBackReference
     private Entreprise entreprise;
 
@@ -54,11 +65,11 @@ public class Convention {
         this.nom = nom;
     }
 
-    public String getSubvention() {
+    public float getSubvention() {
         return subvention;
     }
 
-    public void setSubvention(String subvention) {
+    public void setSubvention(float subvention) {
         this.subvention = subvention;
     }
 
@@ -68,14 +79,6 @@ public class Convention {
 
     public void setSalarieMax(Integer salarieMax) {
         salarie_maximum = salarieMax;
-    }
-
-    public Entreprise getEntreprise() {
-        return entreprise;
-    }
-
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
     }
 
     public List<Salarie> getSalaries() {

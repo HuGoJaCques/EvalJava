@@ -2,6 +2,8 @@ package com.example.Spring_Eval.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -14,8 +16,13 @@ public class Salarie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @Pattern(
+            regexp = "^.{3,10}$",
+            message = "Le matricule doit avoir entre 3 et 10 caractères"
+    )
     String matricule;
 
+    @NotBlank(message = "Le code barre ne peut pas être vide")
     String CodeBarre;
 
     public Integer getId() {
