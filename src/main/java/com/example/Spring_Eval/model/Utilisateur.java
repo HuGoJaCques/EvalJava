@@ -17,8 +17,12 @@ public class Utilisateur {
 
     String email;
 
-    @ManyToOne
-    @JoinColumn(name = "entreprise_id")
+    String password;
+
+    String role;
+
+    @OneToOne
+    @JoinColumn(name = "entreprise_id", referencedColumnName = "id", nullable = true)
     @JsonBackReference
     private Entreprise entreprise;
 
@@ -54,5 +58,15 @@ public class Utilisateur {
         this.password = password;
     }
 
-    String password;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.Spring_Eval.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,9 +19,17 @@ public class Entreprise {
 
     String nom;
 
-    @OneToMany(mappedBy = "entreprise")
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    @OneToOne(mappedBy = "entreprise", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JsonManagedReference
-    private List<Utilisateur> utilisateurs;
+    private Utilisateur utilisateur;
 
 
     public List<Convention> getConventions() {
@@ -31,13 +40,6 @@ public class Entreprise {
         this.conventions = conventions;
     }
 
-    public List<Utilisateur> getUtilisateurs() {
-        return utilisateurs;
-    }
-
-    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-        this.utilisateurs = utilisateurs;
-    }
 
     public String getNom() {
         return nom;
