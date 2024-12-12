@@ -1,5 +1,6 @@
 package com.example.Spring_Eval.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -23,9 +24,19 @@ public class Convention {
 
     @ManyToOne
     @JoinColumn(name = "entreprise_id")
+    @JsonBackReference
     private Entreprise entreprise;
+
     @OneToMany(mappedBy = "convention")
     private List<Salarie> salaries;
+
+    public Integer getSalarie_maximum() {
+        return salarie_maximum;
+    }
+
+    public void setSalarie_maximum(Integer salarie_maximum) {
+        this.salarie_maximum = salarie_maximum;
+    }
 
     public Integer getId() {
         return id;

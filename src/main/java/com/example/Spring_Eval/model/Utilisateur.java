@@ -1,5 +1,6 @@
 package com.example.Spring_Eval.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Utilisateur {
 
     @ManyToOne
     @JoinColumn(name = "entreprise_id")
+    @JsonBackReference
     private Entreprise entreprise;
 
     public Integer getId() {

@@ -1,5 +1,6 @@
 package com.example.Spring_Eval.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,9 @@ public class Entreprise {
     String nom;
 
     @OneToMany(mappedBy = "entreprise")
+    @JsonManagedReference
     private List<Utilisateur> utilisateurs;
+
 
     public List<Convention> getConventions() {
         return conventions;
