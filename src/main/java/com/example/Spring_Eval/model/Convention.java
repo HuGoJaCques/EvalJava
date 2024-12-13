@@ -34,7 +34,7 @@ public class Convention {
 //    }
 
     @ManyToOne
-    @JoinColumn(name = "Entreprise_id")
+    @JoinColumn(name = "entreprise_id")
     @JsonBackReference
     private Entreprise entreprise;
 
