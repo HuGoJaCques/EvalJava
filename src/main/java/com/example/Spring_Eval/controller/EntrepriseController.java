@@ -28,6 +28,7 @@ public class EntrepriseController {
 
     // Créer une nouvelle entreprise
 
+
     @IsAdministrateur
     @PostMapping("/entreprise")
     public ResponseEntity<Entreprise> create(

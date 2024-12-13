@@ -66,6 +66,7 @@ public class SalarieController {
         return new ResponseEntity<>(optionalSalarie.get(), HttpStatus.OK);
     }
 
+    @IsEntreprise
     @DeleteMapping("/salarie/{id}")
     public ResponseEntity<Salarie> delete(@PathVariable int id) {
         salarieDao.deleteById(id);

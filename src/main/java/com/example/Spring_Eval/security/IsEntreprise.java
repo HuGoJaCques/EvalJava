@@ -12,6 +12,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 
 @PreAuthorize("hasRole('ROLE_ENTREPRISE')")
-
 public @interface IsEntreprise {
 }
