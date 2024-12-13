@@ -36,7 +36,7 @@ public class SalarieController {
         Convention convention = optionalConvention.get();
 
         if(convention.getSalaries().size() >= convention.getSalarie_maximum()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }else {
             salarieDao.save(salarie);
 

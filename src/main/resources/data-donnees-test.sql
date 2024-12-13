@@ -2,14 +2,7 @@
 INSERT INTO Entreprise (nom) VALUES ('Entreprise A');
 INSERT INTO Entreprise (nom) VALUES ('Entreprise B');
 
---mdp=root
-
-
--- Insérer des données dans la table Utilisateur
--- INSERT INTO Utilisateur (email, password,role, entreprise_id) VALUES ('admin@example.com', '$2a$10$31nhEmGLow2iIug.qqq6RuG3GXv1fo6wXfojXNswxqYqwR8kUJUEm' ,"ADMINISTRATEUR",NULL);
--- INSERT INTO Utilisateur (email, password,role, entreprise_id) VALUES ('entrepriseA@example.com', '$2a$10$31nhEmGLow2iIug.qqq6RuG3GXv1fo6wXfojXNswxqYqwR8kUJUEm',"ENTREPRISE",1);
--- INSERT INTO Utilisateur (email, password,role,  entreprise_id) VALUES ('entrepriseB@example.com', '$2a$10$31nhEmGLow2iIug.qqq6RuG3GXv1fo6wXfojXNswxqYqwR8kUJUEm' ,"ENTREPRISE",2);
-
+--mot de passe pour utilisateur = root
 -- Insérer des données dans la table Utilisateur
 INSERT INTO Utilisateur (email, password, entreprise_id) VALUES ('admin@example.com', '$2a$10$31nhEmGLow2iIug.qqq6RuG3GXv1fo6wXfojXNswxqYqwR8kUJUEm' ,NULL);
 INSERT INTO Utilisateur (email, password, entreprise_id) VALUES ('entrepriseA@example.com', '$2a$10$31nhEmGLow2iIug.qqq6RuG3GXv1fo6wXfojXNswxqYqwR8kUJUEm',1);

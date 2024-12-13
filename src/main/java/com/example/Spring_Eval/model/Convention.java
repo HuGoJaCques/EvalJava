@@ -90,4 +90,6 @@ public class Convention {
     public void setSalaries(List<Salarie> salaries) {
         this.salaries = salaries;
     }
+
+
 }

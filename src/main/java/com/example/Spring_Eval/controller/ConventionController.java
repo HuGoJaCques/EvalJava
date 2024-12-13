@@ -3,6 +3,7 @@ package com.example.Spring_Eval.controller;
 import com.example.Spring_Eval.dao.ConventionDao;
 import com.example.Spring_Eval.model.Convention;
 import com.example.Spring_Eval.model.Entreprise;
+import com.example.Spring_Eval.model.Utilisateur;
 import com.example.Spring_Eval.security.IsAdministrateur;
 import com.example.Spring_Eval.security.IsEntreprise;
 import jakarta.validation.Valid;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,6 +20,13 @@ public class ConventionController {
 
     @Autowired
     private ConventionDao conventionDao;
+
+    // Lire tous les utilisateurs
+    @GetMapping("/convention")
+    public List<Convention> getAllConvention() {
+        return conventionDao.findAll();
+    }
+
 
     @IsAdministrateur
     @PostMapping("/convention")

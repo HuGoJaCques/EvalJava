@@ -55,23 +55,24 @@ class SpringEvalApplicationTests {
 					.andExpect(status().isForbidden());
 	}
 
-//	@Test
-//	@WithMockUser(username = "entrepriseA@example.com", roles={"ENTREPRISE"})
-//	void AjouterUneConventionEnTantQueEntreprise_reponse403forbidden() throws Exception{
-//
-//		Convention convention = new Convention();
-//		convention.setNom("Convention 4");
-//		convention.setSubvention(10.5F);
-//		convention.setSalarieMaximum(1);
-//
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		String conventionjson = objectMapper.writeValueAsString(convention);
-//
-//		mvc.perform(post("/convention")
-//						.contentType(MediaType.APPLICATION_JSON)
-//						.content(conventionjson))
-//				.andExpect(status().isForbidden());
-//	}
+	@Test
+	@WithMockUser(username = "entrepriseA@example.com", roles={"ENTREPRISE"})
+	void AjouterUneConventionEnTantQueEntreprise_reponse403forbidden() throws Exception{
+
+		Convention convention = new Convention();
+		convention.setNom("Convention 4");
+		convention.setSubvention(10.5F);
+		convention.setSalarie_maximum(1);
+
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		String conventionjson = objectMapper.writeValueAsString(convention);
+
+		mvc.perform(post("/convention")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(conventionjson))
+				.andExpect(status().isForbidden());
+	}
 
 
 
