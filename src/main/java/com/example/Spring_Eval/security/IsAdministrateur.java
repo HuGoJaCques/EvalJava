@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 
 // Restreindre l'accès aux utilisateurs ayant le rôle 'ROLE_ADMIN'
-@PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+@PreAuthorize("hasAnyRole('ROLE_ADMINISTRATEUR','ROLE_ENTREPRISE')")
 public @interface IsAdministrateur {
 }

@@ -58,7 +58,7 @@ public class Salarie {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Convention_id")
+    @JoinColumn(name = "convention_id")
     @JsonBackReference
     private Convention convention;
 }
