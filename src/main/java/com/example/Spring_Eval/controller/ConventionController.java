@@ -50,6 +50,7 @@ public class ConventionController {
         return new ResponseEntity<>(optionalConvention.get(), HttpStatus.OK);
     }
 
+    @IsAdministrateur
     @DeleteMapping("/convention/{id}")
     public ResponseEntity<Convention> delete(@PathVariable int id) {
         conventionDao.deleteById(id);
