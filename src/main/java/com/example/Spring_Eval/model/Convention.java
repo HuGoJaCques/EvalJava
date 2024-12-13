@@ -3,6 +3,7 @@ package com.example.Spring_Eval.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,7 @@ public class Convention {
     @Min(value = 0, message = "La subvention doit être supérieure à 0")
     Float subvention;
 
+    @NotNull
     @Min(value = 1, message = "Le nombre de salarié maximum ne peut pas être inférieur à 1")
     Integer salarie_maximum;
 

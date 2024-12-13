@@ -20,15 +20,29 @@ public class SalarieController {
 
     @Autowired
     private SalarieDao salarieDao;
+    @Autowired
+    private ConventionDao conventionDao;
 
     @IsEntreprise
     @PostMapping("/salarie")
     public ResponseEntity<Salarie> create(
             @RequestBody @Valid Salarie salarie) {
 
-        salarieDao.save(salarie);
+        Optional<Convention> optionalConvention = conventionDao.findById(salarie.getConvention().getId());
+        if (optionalConvention.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
-        return new ResponseEntity<>(salarie, HttpStatus.CREATED);
+        Convention convention = optionalConvention.get();
+
+        if(convention.getSalaries().size() >= convention.getSalarie_maximum()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }else {
+            salarieDao.save(salarie);
+
+            return new ResponseEntity<>(salarie, HttpStatus.CREATED);
+        }
+
     }
 
     // Mettre à jour une convention existante

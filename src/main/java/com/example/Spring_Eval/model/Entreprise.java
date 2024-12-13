@@ -22,21 +22,20 @@ public class Entreprise {
     @NotBlank(message = "Le nom de l'entreprise ne peut pas être vide")
     String nom;
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
-    }
-
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-    }
-
     @OneToOne(mappedBy = "entreprise", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     @JsonManagedReference
     private Utilisateur utilisateur;
 
+    @OneToMany(mappedBy = "entreprise")
+    private List<Convention> conventions;
 
+    public List<Convention> getConventions() {
+        return conventions;
+    }
 
-
+    public void setConventions(List<Convention> conventions) {
+        this.conventions = conventions;
+    }
 
 
     public String getNom() {
@@ -50,28 +49,17 @@ public class Entreprise {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-//    public Convention getConvention() {
-//        return convention;
-//    }
-//
-//    public void setConvention(Convention convention) {
-//        this.convention = convention;
-//    }
-
-    @OneToMany(mappedBy = "entreprise")
-    private List<Convention> conventions;
-
-    public List<Convention> getConventions() {
-        return conventions;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setConventions(List<Convention> conventions) {
-        this.conventions = conventions;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
+
 
 }
